@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+
 import { SectionComponent } from './features/section/section.component';
 import { NewsComponent } from './features/news/news.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
@@ -17,11 +19,12 @@ import { PageNotFoundComponent } from './features/page-not-found/page-not-found.
     PageNotFoundComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
